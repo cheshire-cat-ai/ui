@@ -1,12 +1,12 @@
 {
     "name": "Web UI For Cat V2",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "description": "Multi-chat, multi-agent frontend for Cat version 2.",
     "author_name": "Me",
     "author_url": "https://cheshirecat.ai",
     "plugin_url": "https://github.com/cheshire-cat-ai/ui",
     "tags": "cat, template, example",
-    "thumb": "https://raw.githubusercontent.com/cheshire-cat-ai/ui/main/logo.png",
+    "thumb": "https://raw.githubusercontent.com/cheshire-cat-ai/ui/main/thumb.png",
     "min_cat_version": "2.0.0",
     "max_cat_version": "Unknown"
 }
