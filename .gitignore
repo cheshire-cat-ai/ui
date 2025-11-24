@@ -10,7 +10,11 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+
+###### TODO: reupdate to dist
+_dist/
+########
+
 downloads/
 eggs/
 .eggs/
