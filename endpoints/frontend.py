@@ -8,10 +8,11 @@ from cat import endpoint
 @endpoint.get("/", include_in_schema=False)
 async def frontend_index(req: Request) -> HTMLResponse:
 
-    ccat = req.app.state.ccat
+    # ugly, need a depends for current plugin
+    plugin = req.app.state.ccat.plugin
 
     index_path = os.path.abspath(
-        os.path.join(ccat.plugin.path, "dist/index.html")
+        os.path.join(plugin.path, "dist/index.html")
     )
     return FileResponse(path=index_path)
 
@@ -19,10 +20,11 @@ async def frontend_index(req: Request) -> HTMLResponse:
 @endpoint.get("/assets/{path:path}", include_in_schema=False)
 async def frontend_assets(path: str, req: Request) -> HTMLResponse:
 
-    ccat = req.app.state.ccat
+    # ugly, need a depends for current plugin
+    plugin = req.app.state.ccat.plugin
 
     assets_path = os.path.abspath(
-        os.path.join(ccat.plugin.path, "dist/assets")
+        os.path.join(plugin.path, "dist/assets")
     )
 
     file_path = os.path.abspath(os.path.join(assets_path, path))

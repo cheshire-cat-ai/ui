@@ -3,8 +3,7 @@ from typing import List, Dict
 from cat import hook, endpoint
 from cat.types import Message
 from cat.auth import AuthResource
-from cat.routes import create_crud
-from cat.routes import CRUDSelect, CRUDUpdate
+from cat.routes import create_crud, CRUDSelect, CRUDUpdate
 
 from ..db import ChatDB
 
