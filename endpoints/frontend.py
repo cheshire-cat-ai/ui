@@ -1,15 +1,15 @@
 import os
-from fastapi import FastAPI, Request, HTTPException
+from fastapi import HTTPException
 from fastapi.responses import FileResponse, HTMLResponse
 
 from cat import endpoint
+from cat.auth import get_ccat
 
 
 @endpoint.get("/", include_in_schema=False)
-async def frontend_index(req: Request) -> HTMLResponse:
+async def frontend_index(ccat=get_ccat()) -> HTMLResponse:
 
-    # ugly, need a depends for current plugin
-    plugin = req.app.state.ccat.plugin
+    plugin = ccat.plugin
 
     index_path = os.path.abspath(
         os.path.join(plugin.path, "dist/index.html")
@@ -18,10 +18,9 @@ async def frontend_index(req: Request) -> HTMLResponse:
 
 
 @endpoint.get("/assets/{path:path}", include_in_schema=False)
-async def frontend_assets(path: str, req: Request) -> HTMLResponse:
+async def frontend_assets(path: str, ccat=get_ccat()) -> HTMLResponse:
 
-    # ugly, need a depends for current plugin
-    plugin = req.app.state.ccat.plugin
+    plugin = ccat.plugin
 
     assets_path = os.path.abspath(
         os.path.join(plugin.path, "dist/assets")

@@ -2,8 +2,8 @@ from typing import List, Dict
 
 from cat import hook, endpoint
 from cat.types import Message
-from cat.auth import AuthResource
-from cat.routes import create_crud, CRUDSelect, CRUDUpdate
+from ..utils.crud import create_crud
+from ..utils.schemas import CRUDSelect, CRUDUpdate
 
 from ..db import ChatDB
 
@@ -22,7 +22,6 @@ def chats_crud():
         db_model=ChatDB,
         prefix="/api/v2/chats",
         tag="Chats",
-        auth_resource=AuthResource.CHAT,
         restrict_by_user_id=True,
         search_fields=["name", "messages", "context"],
         select_schema=ChatSelect,
